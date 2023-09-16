@@ -25,18 +25,18 @@ const GameDetails = ({
 
   useEffect(async () => {
     let animationData;
-    if (isPlayerWon && hintsTaken === 0) {
-      animationData = import("../../assets/animations/ChampionWinnerAnimation/ChampionWinnerAnimation.json")
-       
+    
+    if (isPlayerWon&& pressedSolve) {
+      animationData = await import("../../assets/animations/LoserAnimation/LoserAnimation.json")
+      console.log("loser ");
+      console.log(PlayerName);
     }
-    else if (isPlayerWon&& pressedSolve) {
-      animationData = await import("../../assets/animations/GameWonAnimation/GameWonAnimation.json")}
-     else if (isPlayerWon) {
-      animationData =await import("../../assets/animations/LoserAnimation/LoserAnimation.json")
-      console.log(PlayerName)
-      console.log(PlayerImage)
-    } 
-     else {
+    else if (isPlayerWon) {
+        animationData = import("../../assets/animations/ChampionWinnerAnimation/ChampionWinnerAnimation.json")
+         console.log(PlayerImage);
+          console.log(PlayerName);
+      }
+    else {
       animationData = await import("../../assets/animations/KeepTryingAnimation/KeepTryingAnimation.json")
     }
 
