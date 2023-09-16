@@ -15,7 +15,6 @@ const App = () => {
       <div>
       {!loggedIn&&<GoogleLogin
          onSuccess={credentialResponse => {
-          console.log(loggedIn);
           const decodedToken = jwtDecode(credentialResponse.credential);
           setName(decodedToken.name);
           setImage(decodedToken.picture);
