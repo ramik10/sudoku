@@ -32,7 +32,7 @@ const GameDetails = ({
       console.log(PlayerName);
     }
     else if (isPlayerWon) {
-        animationData = import("../../assets/animations/GameWonAnimation/GameWonAnimation.json")
+        animationData = await import("../../assets/animations/GameWonAnimation/GameWonAnimation.json")
          console.log(PlayerImage);
           console.log(PlayerName);
       }
