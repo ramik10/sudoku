@@ -35,7 +35,7 @@ const App = () => {
         setEmail("");
       }} />}
     <div className="App">
-      <Game key={email} name={name} image={image} />
+      <Game key={email} name={name} image={image} email={email}/>
     </div>
     </>
   );

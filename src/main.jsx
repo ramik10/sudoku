@@ -9,7 +9,6 @@ ReactDOM.render(
   <React.StrictMode>
     <GoogleOAuthProvider
       clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
-      redirectUri="http://localhost:5173"
       scopes={['email', 'profile']}>
     <App />
     </GoogleOAuthProvider>

@@ -16,7 +16,8 @@ const GameDetails = ({
   mediumMaxEmptyCells,
   hardMaxEmptyCells,
   PlayerName,
-  PlayerImage
+  PlayerImage,
+  PlayerEmail
 }) => {
 
   let gameModeName = "Easy";
@@ -30,6 +31,7 @@ const GameDetails = ({
       animationData = await import("../../assets/animations/LoserAnimation/LoserAnimation.json")
       console.log("loser ");
       console.log(PlayerName);
+      console.log(PlayerEmail)
     }
     else if (isPlayerWon) {
         animationData = await import("../../assets/animations/GameWonAnimation/GameWonAnimation.json")
@@ -73,7 +75,25 @@ const GameDetails = ({
         </div>
         <div className="modal-footer">
           <Button
-            onClick={closeModal}
+            onClick={async ()=>{
+              if(isPlayerWon && !pressedSolve){
+                console.log("winner");
+                console.log(PlayerEmail);
+                await fetch(import.meta.env.VITE_BACKEND+"/api/won", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  PlayerName,
+                  PlayerImage,
+                  PlayerEmail
+                }),
+              })
+              closeModal();
+              }
+              closeModal();
+            }}
             buttonStyle="btn--primary--solid"
             text="Continue"
           />
