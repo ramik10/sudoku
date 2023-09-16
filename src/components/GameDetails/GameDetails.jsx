@@ -64,6 +64,7 @@ const GameDetails = ({
         <div className="modal-body">
           <div className="animation-container" id="lottieAnimation"></div>
           {isPlayerWon && <p>You Won !</p>}
+          {isPlayerWon && pressedSolve && <p>But at what cost!</p>}
           {!isPlayerWon && <p>Keep Playing you will surely complete it!</p>}
           <p>Game mode: {gameModeName}</p>
           <p>Moves Played: {movesTaken}</p>
