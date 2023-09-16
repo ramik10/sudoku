@@ -31,7 +31,7 @@ const GameDetails = ({
       console.log("loser ");
       console.log(PlayerName);
     }
-    if (isPlayerWon) {
+    else if (isPlayerWon) {
         animationData = import("../../assets/animations/GameWonAnimation/GameWonAnimation.json")
          console.log(PlayerImage);
           console.log(PlayerName);
