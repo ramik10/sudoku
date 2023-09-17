@@ -54,6 +54,31 @@ const GameDetails = ({
     return () => lottieAnimation.destroy(); // Clean up function
   }, [isPlayerWon, hintsTaken, pressedSolve]);
 
+
+  const handleclick = async ()=>{
+    if(isPlayerWon && !pressedSolve){
+      const now = new Date();
+      const time_taken = now - startTime
+      const timeTaken = time_taken.toString()
+      await fetch(import.meta.env.VITE_BACKEND+"/api/won", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        PlayerName,
+        PlayerImage,
+        PlayerEmail,
+        movesTaken,
+        gameModeName,
+        timeTaken
+      }),
+    })
+    closeModal();
+    }
+    closeModal();
+  }
+
   return (
     <div className="GameDetails">
       <div className="modal-container">
@@ -75,25 +100,7 @@ const GameDetails = ({
         </div>
         <div className="modal-footer">
           <Button
-            onClick={async ()=>{
-              if(isPlayerWon && !pressedSolve){
-                console.log("winner");
-                console.log(PlayerEmail);
-                await fetch(import.meta.env.VITE_BACKEND+"/api/won", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  PlayerName,
-                  PlayerImage,
-                  PlayerEmail
-                }),
-              })
-              closeModal();
-              }
-              closeModal();
-            }}
+            onClick={handleclick}
             buttonStyle="btn--primary--solid"
             text="Continue"
           />
