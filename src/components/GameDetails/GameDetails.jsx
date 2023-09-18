@@ -17,7 +17,9 @@ const GameDetails = ({
   hardMaxEmptyCells,
   PlayerName,
   PlayerImage,
-  PlayerEmail
+  PlayerEmail,
+  starttime,
+  isloggedin
 }) => {
 
   let gameModeName = "Easy";
@@ -29,14 +31,9 @@ const GameDetails = ({
     
     if (isPlayerWon&& pressedSolve) {
       animationData = await import("../../assets/animations/LoserAnimation/LoserAnimation.json")
-      console.log("loser ");
-      console.log(PlayerName);
-      console.log(PlayerEmail)
     }
     else if (isPlayerWon) {
         animationData = await import("../../assets/animations/GameWonAnimation/GameWonAnimation.json")
-         console.log(PlayerImage);
-          console.log(PlayerName);
       }
     else {
       animationData = await import("../../assets/animations/KeepTryingAnimation/KeepTryingAnimation.json")
@@ -56,25 +53,25 @@ const GameDetails = ({
 
 
   const handleclick = async ()=>{
-    if(isPlayerWon && !pressedSolve){
+    if(isPlayerWon && !pressedSolve && isloggedin){
       const now = new Date();
-      const time_taken = now - startTime
-      const timeTaken = time_taken.toString()
+      const timeNow = now.getTime();
+      const time_taken = timeNow - starttime
       await fetch(import.meta.env.VITE_BACKEND+"/api/won", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      mode: "no-cors",
       body: JSON.stringify({
         PlayerName,
         PlayerImage,
         PlayerEmail,
         movesTaken,
         gameModeName,
-        timeTaken
+        time_taken
       }),
     })
-    closeModal();
     }
     closeModal();
   }
@@ -96,7 +93,7 @@ const GameDetails = ({
           <p>Game mode: {gameModeName}</p>
           <p>Moves Played: {movesTaken}</p>
           <p>Hints Taken: {hintsTaken}</p>
-          <small>Started at: {startTime.split("GMT")[0]}</small>
+          <small>Started at: {startTime.toLocaleString().split("GMT")[0]}</small>
         </div>
         <div className="modal-footer">
           <Button

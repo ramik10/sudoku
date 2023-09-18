@@ -5,18 +5,15 @@ import { GoogleLogin } from '@react-oauth/google';
 import { googleLogout } from '@react-oauth/google';
 import jwtDecode from "jwt-decode";
 
-const App = () => {
+const App =  () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   return (
-    <>
-
       <div className="App">
-        <div>
           {!loggedIn && <GoogleLogin
-            onSuccess={credentialResponse => {
+            onSuccess={(credentialResponse) => {
               const decodedToken = jwtDecode(credentialResponse.credential);
               setName(decodedToken.name);
               setImage(decodedToken.picture);
@@ -27,28 +24,27 @@ const App = () => {
               console.log('Login Failed');
             }}
           />}
-        </div>
-        {loggedIn && <LoggedIn key={email} image={image} name={name} Logout={() => {
+        {loggedIn && <LoggedIn key={email} image={image} name={name} logout={() => {
           googleLogout();
-          setLoggedIn(false);
           setName("");
           setImage("");
           setEmail("");
+          setLoggedIn(false);
         }} />}
-        <Game key={email} name={name} image={image} email={email} />
+        <Game name={name} image={image} email={email} isloggedin={loggedIn} />
       </div>
-    </>
   );
 };
-
-export default App;
 
 function LoggedIn(props) {
   return (
     <div style={{ marginLeft: "10px", display:"flex", justifyContent:"start", gap:"0.75rem" }}>
       <img style={{ borderRadius: "50px", width: "50px", marginLeft: "10px" }} src={props.image} alt="profile" />
-      <h4 >Welcome {props.name}</h4>
-      <button style={{ color: "white", backgroundColor: "blue", borderRadius: "16px", width: "80px" }} onClick={props.Logout}>Logout</button>
+      <h4 style={{marginTop:"15px"}}>Welcome {props.name}</h4>
+      <button style={{ color: "white", backgroundColor: "blue", borderRadius: "16px", width: "80px", height:"30px", marginTop:"10px" }} onClick={props.logout}>Logout</button>
     </div>
   )
 }
+
+export default App;
+

@@ -48,8 +48,9 @@ const Game = (props) => {
   );
 
   const [startTime, setStartTime] = useLocalStorage("startTime", () =>
-    Date().toLocaleString()
+    Date()
   );
+  const [starttime, setstarttime] = useState(0);
 
   // Logic for modal
   const [showInformationModal, setShowInformationModal] = useState(false);
@@ -128,6 +129,8 @@ const Game = (props) => {
     setIsPlayerWon(false);
     setPressedSolve(false);
     setStartTime(() => Date().toLocaleString());
+    const now = new Date();
+    setstarttime(now.getTime());
 
     // Closing the difficulty modal and also setting the isLoading to false
     setShowDifficultySelectionModal((show) => !show);
@@ -214,11 +217,13 @@ const Game = (props) => {
           movesTaken={movesTaken}
           hintsTaken={hintsTaken}
           startTime={startTime}
+          starttime={starttime}
           isPlayerWon={isPlayerWon}
           pressedSolve={pressedSolve}
           gameMode={gameMode}
           mediumMaxEmptyCells={mediumMaxEmptyCells}
           hardMaxEmptyCells={hardMaxEmptyCells}
+          isloggedin={props.isloggedin}
         />
       )}
       <Grid handleCellClick={handleCellClick} grid={grid} />
