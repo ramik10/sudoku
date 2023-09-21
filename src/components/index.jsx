@@ -6,6 +6,7 @@ import InformationModal from "./InformationModal/InformationModal.jsx";
 import NoSolutionFoundModal from "./NoSolutionFoundModal/NoSolutionFoundModal.jsx";
 import GameDetails from "./GameDetails/GameDetails.jsx";
 import DifficultySelectionModal from "./DifficultySelectionModal/DifficultySelectionModal.jsx";
+import BasicModal from "./RuleModal/Rule.jsx";
 
 export {
   Grid,
@@ -16,4 +17,5 @@ export {
   NoSolutionFoundModal,
   GameDetails,
   DifficultySelectionModal,
+  BasicModal,
 };

@@ -11,6 +11,7 @@ import {
   NoSolutionFoundModal,
   GameDetails,
   DifficultySelectionModal,
+  BasicModal,
 } from "../../components/index.jsx";
 
 import {
@@ -186,6 +187,7 @@ const Game = (props) => {
       >
         Sudoku Game
       </h1>
+      <BasicModal />
       {showInformationModal && (
         <InformationModal
           closeModal={() => setShowInformationModal((show) => !show)}
