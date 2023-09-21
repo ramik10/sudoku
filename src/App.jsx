@@ -39,11 +39,15 @@ const App =  () => {
 
 function LoggedIn(props) {
   return (
+    <>
     <div style={{ marginLeft: "10px", display:"flex", justifyContent:"start", gap:"0.75rem" }}>
       <img style={{ borderRadius: "50px", width: "50px", marginLeft: "10px" }} src={props.image} alt="profile" />
       <h4 style={{marginTop:"15px"}}>Welcome {props.name}</h4>
+    </div>
+    <div style={{ marginLeft: "10px", display:"flex", justifyContent:"start", gap:"0.75rem" }}>
       <button style={{ color: "white", backgroundColor: "blue", borderRadius: "16px", width: "80px", height:"30px", marginTop:"10px" }} onClick={props.logout}>Logout</button>
     </div>
+    </>
   )
 }
 
