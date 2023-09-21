@@ -130,8 +130,7 @@ const Game = (props) => {
     setIsPlayerWon(false);
     setPressedSolve(false);
     setStartTime(() => Date().toLocaleString());
-    const now = new Date();
-    setstarttime(now.getTime());
+    setstarttime(new Date().getTime());
 
     // Closing the difficulty modal and also setting the isLoading to false
     setShowDifficultySelectionModal((show) => !show);
