@@ -31,7 +31,8 @@ const App =  () => {
           setEmail("");
           setLoggedIn(false);
         }} />}
-        <Game name={name} image={image} email={email} isloggedin={loggedIn} />
+        {!loggedIn && <h1 style={{marginTop:"10px"}}>Please Login at top left corner of the screen to Play</h1>}
+        {loggedIn&&<Game name={name} image={image} email={email} isloggedin={loggedIn} />}
       </div>
   );
 };
