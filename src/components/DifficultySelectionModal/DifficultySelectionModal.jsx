@@ -83,7 +83,7 @@ const DifficultySelectionModal = ({
               <p>Easy</p>
             </div>
 
-            <div
+            {/* <div
               className="difficulty medium"
               onClick={() => handleNewGame(mediumMaxEmptyCells)}
             >
@@ -100,7 +100,7 @@ const DifficultySelectionModal = ({
                 id="hardDifficultyAnimation"
               ></div>
               <p>Hard</p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="modal-footer">
