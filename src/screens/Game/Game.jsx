@@ -240,6 +240,11 @@ const Game = (props) => {
           buttonStyle="btn--danger--solid"
           text="New Game"
         />
+        <Button
+          onClick={handleClearBoard}
+          buttonStyle="btn--warning--solid"
+          text="Clear Board"
+        />
       </div>
     </div>
   );

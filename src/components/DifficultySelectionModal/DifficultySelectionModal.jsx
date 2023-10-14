@@ -75,13 +75,13 @@ const DifficultySelectionModal = ({
         </div>
         <div className="difficulty-modal-body" ref={bodyContainer}>
           <div className="difficulty-selection-container">
-            {/* <div className="difficulty easy" onClick={() => handleNewGame(easyMaxEmptyCells)}>
+            <div className="difficulty easy" onClick={() => handleNewGame(easyMaxEmptyCells)}>
               <div
                 className="animation-container-difficulty"
                 id="easyDifficultyAnimation"
               ></div>
               <p>Easy</p>
-            </div> */}
+            </div>
 
             <div
               className="difficulty medium"
@@ -94,13 +94,13 @@ const DifficultySelectionModal = ({
               <p>Medium</p>
             </div>
 
-            {/* <div className="difficulty hard" onClick={() => handleNewGame(hardMaxEmptyCells)}>
+            <div className="difficulty hard" onClick={() => handleNewGame(hardMaxEmptyCells)}>
               <div
                 className="animation-container-difficulty"
                 id="hardDifficultyAnimation"
               ></div>
               <p>Hard</p>
-            </div> */}
+            </div>
           </div>
         </div>
         <div className="modal-footer">
